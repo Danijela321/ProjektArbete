@@ -1,6 +1,9 @@
 package com.webbutik.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +16,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.webbutik.entity.Car;
+import com.webbutik.entity.ModelOfCar;
 import com.webbutik.service.CarService;
 
 @RestController
 public class CarController {
 	@Autowired
 	private CarService service;
+	
 
 	@PostMapping("/saveCar")
 	public Car saveCar(@RequestBody Car car) {
@@ -93,6 +98,10 @@ public class CarController {
 			}
 	
 	
+	@GetMapping("/car/brand/{brandName}/model/{modelName}/fuel/{fuel}")
+	public List<Car> getAllCarByBrandAndModelAndFuel(@PathVariable Collection<String> brandName,@PathVariable Collection<String> modelName, @PathVariable Collection<String> fuel){
+		return service.getAllWithSamaBrandModelAndFuel(brandName,modelName,fuel);
+	}
 	
 	
 	@PutMapping("/updateCar")
@@ -100,9 +109,20 @@ public class CarController {
 		return service.updateCar(car);
 	}
 	
+	@GetMapping("/cars/year/{yearProduce}")
+	public List<Car> getAllCarByYear(@PathVariable Integer  yearProduce){
+		return service.getAllCarByYear(yearProduce);
+	}
 	
+	@GetMapping("/cars/color/{color}")
+	public List<Car> getAllCarByColor(@PathVariable String  color){	
+		return service.getAllCarByColor(color);
+	}
 	
-	
+//	@GetMapping("/cars/{timeStored}")
+//	public List<Car> getAllCarByTimeStored(@PathVariable Date timeStored){
+//		return service.getAllByTimeStored(timeStored);
+//	}
 //	
 //	@PutMapping("/updateCarPris")
 //	public Car updatePrise(@RequestBody  Car car) {

@@ -6,15 +6,18 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.webbutik.entity.Car;
 import com.webbutik.repository.CarRepository;
 
+@Transactional
 @Service
 public class CarService {
 	@Autowired
 	private CarRepository repository;
 	
+
 
 	public Car saveCar(Car car) {
 		return repository.save(car);
@@ -97,6 +100,24 @@ public class CarService {
 	public List<Car> getAllWithSamaBrandAndFuel(Collection<String> brandName, Collection<String> fuel) {
 		return repository.findAllByBrandAndFuel(brandName,fuel);
 	}
+
+	public List<Car> getAllWithSamaBrandModelAndFuel(Collection<String> brandName, Collection<String> modelName,
+			Collection<String> fuel) {
+		return repository.findAllByBrandModelAndFuel(brandName,modelName,fuel);
+	}
+
+	public List<Car> getAllCarByYear(Integer yearProduce) {
+		return repository.findCarsByYear(yearProduce);
+	}
+
+	public List<Car> getAllCarByColor(String color) {
+		return repository.findCarsByColor(color);
+	}
+
+	public List<Car> getAllByTimeStored(Date timeStored) {
+		return repository.findCarByTimeStored(timeStored);
+	}
+
 	
 //	public Car updatePrise( Car car,int price) {
 //		Car gamlaCar = repository.findByName(car.getRegNr());

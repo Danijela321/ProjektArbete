@@ -1,0 +1,5 @@
+com\webbutik\controller\HelloController.class
+com\webbutik\ProjektArbetApplication.class
+com\webbutik\entity\Car.class
+com\webbutik\ServletInitializer.class
+com\webbutik\controller\CarController.class
