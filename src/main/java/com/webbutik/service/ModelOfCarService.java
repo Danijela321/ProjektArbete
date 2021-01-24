@@ -17,7 +17,6 @@ public class ModelOfCarService {
 
 	public ModelOfCar saveModel(ModelOfCar modelOfCar) {
 		return repository.save(modelOfCar);
-
 	}
 
 
@@ -29,8 +28,7 @@ public class ModelOfCarService {
 	public String deleteModelByName(String name) {
 		ModelOfCar gamlaModel=repository.findByName(name);
 		repository.delete(gamlaModel);
-		return ("Mode " + name + " är raderad");
-		
+		return ("Mode " + name + " är raderad");		
 
 	}
 

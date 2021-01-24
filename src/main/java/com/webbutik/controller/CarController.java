@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.webbutik.entity.Car;
 import com.webbutik.entity.ModelOfCar;
 import com.webbutik.service.CarService;
+import com.webbutik.service.ModelOfCarService;
 
 @RestController
 public class CarController {
@@ -106,7 +107,7 @@ public class CarController {
 	
 	@PutMapping("/updateCar")
 	public Car updateCar(@RequestBody Car car) {
-		return service.updateCar(car);
+			return service.updateCar(car);
 	}
 	
 	@GetMapping("/cars/year/{yearProduce}")

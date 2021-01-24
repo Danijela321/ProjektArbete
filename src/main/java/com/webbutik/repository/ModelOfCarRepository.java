@@ -7,7 +7,6 @@ import com.webbutik.entity.ModelOfCar;
 @Repository
 public interface ModelOfCarRepository extends JpaRepository<ModelOfCar, Integer>{
 
-	ModelOfCar findByName(String name);
-	
+	ModelOfCar findByName(String name);	
 
 }

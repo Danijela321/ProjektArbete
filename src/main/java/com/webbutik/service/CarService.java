@@ -9,32 +9,40 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.webbutik.entity.Car;
+import com.webbutik.entity.ModelOfCar;
 import com.webbutik.repository.CarRepository;
+import com.webbutik.repository.ModelOfCarRepository;
 
 @Transactional
 @Service
 public class CarService {
 	@Autowired
 	private CarRepository repository;
+
+	// för att koppla car med model i modelOfCarTAble
+	@Autowired
+	private ModelOfCarRepository modelRepository;
+
 	
-
-
 	public Car saveCar(Car car) {
+		ModelOfCar modelofcar = new ModelOfCar();
+		String namnModelOfCar = modelofcar.getName();
+		namnModelOfCar = car.getModelName();
+		modelofcar = modelRepository.findByName(namnModelOfCar);
+		car.setModelOfCarName(modelofcar);
 		return repository.save(car);
 	}
 
 	public List<Car> getAllCar() {
 		return repository.findAll();
 	}
-	
-	
-	
+
 	public List<Car> getAllByBrand(Collection<String> brand) {
 		return repository.findByBrand(brand);
 	}
-	
-	public List<Car> getAllByBrandAndModel(Collection<String> brand, Collection<String> model){
-		return repository.findAllByBrandAndModel(brand,model);
+
+	public List<Car> getAllByBrandAndModel(Collection<String> brand, Collection<String> model) {
+		return repository.findAllByBrandAndModel(brand, model);
 	}
 
 	public Car getCarById(int id) {
@@ -68,7 +76,7 @@ public class CarService {
 	}
 
 	public List<Car> getAllByBelowPrice(Integer price) {
-	
+
 		return repository.findByBelowPrice(price);
 	}
 
@@ -94,16 +102,15 @@ public class CarService {
 
 	public List<Car> getAllWithSameFuel(String fuel) {
 		return repository.findAllCarWithSameFuel(fuel);
-			}
+	}
 
-	
 	public List<Car> getAllWithSamaBrandAndFuel(Collection<String> brandName, Collection<String> fuel) {
-		return repository.findAllByBrandAndFuel(brandName,fuel);
+		return repository.findAllByBrandAndFuel(brandName, fuel);
 	}
 
 	public List<Car> getAllWithSamaBrandModelAndFuel(Collection<String> brandName, Collection<String> modelName,
 			Collection<String> fuel) {
-		return repository.findAllByBrandModelAndFuel(brandName,modelName,fuel);
+		return repository.findAllByBrandModelAndFuel(brandName, modelName, fuel);
 	}
 
 	public List<Car> getAllCarByYear(Integer yearProduce) {
@@ -118,7 +125,6 @@ public class CarService {
 		return repository.findCarByTimeStored(timeStored);
 	}
 
-	
 //	public Car updatePrise( Car car,int price) {
 //		Car gamlaCar = repository.findByName(car.getRegNr());
 //		gamlaCar.setPrice(car.getPrice());

@@ -11,10 +11,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.webbutik.entity.Car;
+import com.webbutik.entity.ModelOfCar;
 
 @Repository
 public interface CarRepository extends JpaRepository<Car, Integer> {
-
+	
 	Car findByName(String name);
 
 	@Query(value = "SELECT u FROM Car u WHERE u.brandName IN :names")
