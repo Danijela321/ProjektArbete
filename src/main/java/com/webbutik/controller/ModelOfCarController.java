@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.webbutik.entity.ModelOfCar;
+
+import com.webbutik.exception.OurCustomExceptions;
 import com.webbutik.service.ModelOfCarService;
 
 @RestController
@@ -38,7 +40,12 @@ public class ModelOfCarController {
 
 	@GetMapping("model/name/{name}")
 	public ModelOfCar findModelByName(@PathVariable String name) {
+		
+//		if (service.getModelByName(name)==null)
+//		throw new OurCustomExceptions("Model finns inte i tabell");
+//		else
 		return service.getModelByName(name);
+
 	}
 		
 }

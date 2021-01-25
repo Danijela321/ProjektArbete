@@ -103,8 +103,7 @@ public class CarController {
 	public List<Car> getAllCarByBrandAndModelAndFuel(@PathVariable Collection<String> brandName,@PathVariable Collection<String> modelName, @PathVariable Collection<String> fuel){
 		return service.getAllWithSamaBrandModelAndFuel(brandName,modelName,fuel);
 	}
-	
-	
+		
 	@PutMapping("/updateCar")
 	public Car updateCar(@RequestBody Car car) {
 			return service.updateCar(car);
