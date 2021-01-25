@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.webbutik.entity.Car;
 import com.webbutik.entity.ModelOfCar;
+import com.webbutik.exception.OurServerException;
 import com.webbutik.service.CarService;
 import com.webbutik.service.ModelOfCarService;
 
@@ -27,8 +28,12 @@ public class CarController {
 	
 
 	@PostMapping("/saveCar")
-	public Car saveCar(@RequestBody Car car) {
-		return service.saveCar(car);
+	public Car saveCar(@RequestBody Car car) throws OurServerException {
+		try {
+			return service.saveCar(car);
+		} catch (Exception e) {
+			throw new OurServerException("Bil finns  i tabell");
+		}
 	}
 
 	@GetMapping("/cars")

@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.webbutik.entity.Car;
 import com.webbutik.entity.ModelOfCar;
 import com.webbutik.exception.OurCustomExceptions;
+import com.webbutik.exception.OurException;
+import com.webbutik.exception.OurServerException;
 import com.webbutik.repository.CarRepository;
 import com.webbutik.repository.ModelOfCarRepository;
 
@@ -24,15 +26,19 @@ public class CarService {
 	@Autowired
 	private ModelOfCarRepository modelRepository;
 
-	public Car saveCar(Car car) {
+	public Car saveCar(Car car) throws Exception {
 		ModelOfCar modelofcar = new ModelOfCar();
 		String namnModelOfCar = modelofcar.getName();
 		namnModelOfCar = car.getModelName();
 		modelofcar = modelRepository.findByName(namnModelOfCar);
 		
-		car.setModelOfCarName(modelofcar);
-		return repository.save(car);
+		Car existingCar = repository.findByName(car.getName());
 		
+		if(existingCar==null) {		
+		car.setModelOfCarName(modelofcar);
+		return repository.save(car);}
+		else
+			throw new OurServerException("Bil finns  i tabell");
 	}
 
 	// klart

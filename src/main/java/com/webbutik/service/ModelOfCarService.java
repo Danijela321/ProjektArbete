@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.webbutik.entity.Car;
 import com.webbutik.entity.ModelOfCar;
 import com.webbutik.exception.OurCustomExceptions;
-
+import com.webbutik.exception.OurServerException;
 import com.webbutik.repository.CarRepository;
 import com.webbutik.repository.ModelOfCarRepository;
 
@@ -26,8 +26,30 @@ public class ModelOfCarService {
 	 @Autowired
 	private CarRepository carRepository;
 
-	public ModelOfCar saveModel(ModelOfCar modelOfCar) {
+	public ModelOfCar saveModel(ModelOfCar modelOfCar) throws Exception {
+		ModelOfCar existingModel = repository.findByName(modelOfCar.getName());
+		if(existingModel==null)
 		return repository.save(modelOfCar);
+		else
+			throw new OurServerException("Model finns  i tabell");
+		
+		
+		/**
+		 * 	ModelOfCar modelofcar = new ModelOfCar();
+		String namnModelOfCar = modelofcar.getName();
+		namnModelOfCar = car.getModelName();
+		modelofcar = modelRepository.findByName(namnModelOfCar);
+		
+		Car existingCar = repository.findByName(car.getName());
+		
+		if(existingCar==null) {		
+		car.setModelOfCarName(modelofcar);
+		return repository.save(car);}
+		else
+			throw new OurServerException("Bil finns  i tabell");
+	}
+		 * 
+		 */
 	}
 
 	public String deleteModel(Integer id) {

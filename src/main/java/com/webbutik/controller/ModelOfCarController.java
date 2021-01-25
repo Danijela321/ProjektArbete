@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.webbutik.entity.ModelOfCar;
 
 import com.webbutik.exception.OurCustomExceptions;
+import com.webbutik.exception.OurServerException;
 import com.webbutik.service.ModelOfCarService;
 
 @RestController
@@ -23,8 +24,12 @@ public class ModelOfCarController {
 	
 	
 	@PostMapping("/saveModel")
-	public ModelOfCar saveModel(@RequestBody ModelOfCar modelOfCar) {
-		return service.saveModel(modelOfCar);
+	public ModelOfCar saveModel(@RequestBody ModelOfCar modelOfCar) throws OurServerException {
+		try {
+			return service.saveModel(modelOfCar);
+		}catch (Exception e) {
+			throw new OurServerException("Model finns  i tabell");
+		}
 	}
 	
 	@DeleteMapping("/deleteModel/{id}")

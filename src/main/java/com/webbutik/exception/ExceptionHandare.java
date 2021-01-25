@@ -3,6 +3,8 @@ package com.webbutik.exception;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -27,20 +29,18 @@ public class ExceptionHandare {
 		return new ResponseEntity<>(ourException,badRequest);		
 	
 	}	
+	 @ExceptionHandler(value= {OurServerException.class})
+	    public final ResponseEntity<Object> handleUnexpectedExceptions(Exception ex) {
+		 HttpStatus serverError = HttpStatus.INTERNAL_SERVER_ERROR; //internal server error 500
+			OurException ourException=new OurException(ex.getMessage(),
+					//e,  e=Throwable
+					serverError,
+					ZonedDateTime.now(ZoneId.of("Europe/Stockholm"))); // här kan vi andra timestamp
+			
+			//2. return  respons entity
+			return new ResponseEntity<>(ourException,serverError);
+	    }
 
 
-	
-	/*
-	 * 
-	 *    @ExceptionHandler(Exception.class)
-    public ResponseEntity<Object> handle(Exception ex, 
-                HttpServletRequest request, HttpServletResponse response) {
-        if (ex instanceof NullPointerException) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-    }
-	 */
-	
 	
 }
