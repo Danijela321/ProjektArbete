@@ -4,8 +4,8 @@ Java 11
 
 Javadoc
 Spring Boot
-Hibernate
-JPA Queries
+Hibernate 5
+JPARepository med Spring Data JPA @Query annotation
 Derby databasen
 Vue.js
 Tomcat 

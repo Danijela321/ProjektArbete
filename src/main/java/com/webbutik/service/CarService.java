@@ -26,6 +26,7 @@ public class CarService {
 	@Autowired
 	private ModelOfCarRepository modelRepository;
 
+	//klart
 	public Car saveCar(Car car) throws Exception {
 		ModelOfCar modelofcar = new ModelOfCar();
 		String namnModelOfCar = modelofcar.getName();

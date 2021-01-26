@@ -23,52 +23,44 @@ public class ModelOfCarService {
 	@Autowired
 	private ModelOfCarRepository repository;
 
-	 @Autowired
+	@Autowired
 	private CarRepository carRepository;
 
 	public ModelOfCar saveModel(ModelOfCar modelOfCar) throws Exception {
 		ModelOfCar existingModel = repository.findByName(modelOfCar.getName());
-		if(existingModel==null)
-		return repository.save(modelOfCar);
+		if (existingModel == null)
+			return repository.save(modelOfCar);
 		else
 			throw new OurServerException("Model finns  i tabell");
-		
-		
-		/**
-		 * 	ModelOfCar modelofcar = new ModelOfCar();
-		String namnModelOfCar = modelofcar.getName();
-		namnModelOfCar = car.getModelName();
-		modelofcar = modelRepository.findByName(namnModelOfCar);
-		
-		Car existingCar = repository.findByName(car.getName());
-		
-		if(existingCar==null) {		
-		car.setModelOfCarName(modelofcar);
-		return repository.save(car);}
-		else
-			throw new OurServerException("Bil finns  i tabell");
-	}
-		 * 
-		 */
+
 	}
 
-	public String deleteModel(Integer id) {
+	public String deleteModel(Integer id) throws OurServerException {
+		ModelOfCar existingModel = repository.findById(id).get();
+		String nameOfExistingModel = existingModel.getName();
+		List<Car> existingCar = carRepository.findCarsByModelName(nameOfExistingModel);
 
-		repository.findById(id).orElseThrow(() -> new OurCustomExceptions("Model finns inte i tabell"));
-		repository.deleteById(id);
-		return ("Model med id= " + id + " är raderad");
+		if (existingCar.isEmpty()) {
+			repository.findById(id).get();
+			repository.deleteById(id);
+			return ("Model med id= " + id + " är raderad");
+		} else
+			throw new OurServerException("Tyvärr kan model inte raderas!");
 	}
 
-	public String deleteModelByName(String name) {
-				
+	public String deleteModelByName(String name) throws OurServerException {
+
 		ModelOfCar gamlaModel = repository.findByName(name);
-		if (gamlaModel == null) {
-			throw new OurCustomExceptions("Model finns inte i tabell");
-		}
-		else {
+		String nameOfExistingModel = gamlaModel.getName();
+		List<Car> existingCar = carRepository.findCarsByModelName(nameOfExistingModel);
+
+		if (existingCar.isEmpty() || existingCar.equals(null)) {
+
 			repository.delete(gamlaModel);
 			return ("Mode " + name + " är raderad");
-		}
+		} else
+
+			throw new OurServerException("Tyvärr kan model inte raderas!");
 	}
 
 	public ModelOfCar getModelByName(String name) {
