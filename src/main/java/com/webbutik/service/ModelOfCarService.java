@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +21,7 @@ import com.webbutik.repository.ModelOfCarRepository;
 @Transactional
 @Service
 public class ModelOfCarService {
+	private static final Logger LOGGER = LoggerFactory.getLogger(ModelOfCarService.class);
 
 	@Autowired
 	private ModelOfCarRepository repository;
@@ -31,7 +34,8 @@ public class ModelOfCarService {
 		if (existingModel == null)
 			return repository.save(modelOfCar);
 		else
-			throw new OurServerException("Model finns  i tabell");
+			{
+			throw new OurServerException("Model finns  i tabell");}
 
 	}
 
@@ -45,7 +49,8 @@ public class ModelOfCarService {
 			repository.deleteById(id);
 			return ("Model med id= " + id + " är raderad");
 		} else
-			throw new OurServerException("Tyvärr kan model inte raderas!");
+			{
+			throw new OurServerException("Tyvärr kan model inte raderas!");}
 	}
 
 	public String deleteModelByName(String name) throws OurServerException {
@@ -59,13 +64,14 @@ public class ModelOfCarService {
 			repository.delete(gamlaModel);
 			return ("Mode " + name + " är raderad");
 		} else
-
-			throw new OurServerException("Tyvärr kan model inte raderas!");
+			{
+			throw new OurServerException("Tyvärr kan model inte raderas!");}
 	}
 
 	public ModelOfCar getModelByName(String name) {
 		if (repository.findByName(name) == null)
-			throw new OurCustomExceptions("Model finns inte i tabell");
+		{LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat");
+			throw new OurCustomExceptions("Model finns inte i tabell");}
 		else
 			return repository.findByName(name);
 	}

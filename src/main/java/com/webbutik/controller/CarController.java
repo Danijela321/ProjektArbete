@@ -6,6 +6,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,8 @@ import com.webbutik.service.ModelOfCarService;
 
 @RestController
 public class CarController {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(CarController.class);
 	@Autowired
 	private CarService service;
 	
@@ -32,7 +36,8 @@ public class CarController {
 		try {
 			return service.saveCar(car);
 		} catch (Exception e) {
-			throw new OurServerException("Bil finns  i tabell");
+			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat.Bil finns  i tabell");
+			throw new OurServerException("Bil finns  i tabell.");
 		}
 	}
 
@@ -43,7 +48,7 @@ public class CarController {
 
 	@GetMapping("/car/{id}")
 	public Car findCarById(@PathVariable int id) {
-		return service.getCarById(id);
+			return service.getCarById(id);	
 	}
 
 	@GetMapping("/car/regNr/{regNr}")
