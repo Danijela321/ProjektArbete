@@ -70,6 +70,10 @@
   <classpathentry kind="var" path="M2_REPO/org/glassfish/jakarta.el/3.0.3/jakarta.el-3.0.3.jar" sourcepath="M2_REPO/org/glassfish/jakarta.el/3.0.3/jakarta.el-3.0.3-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/embed/tomcat-embed-websocket/9.0.41/tomcat-embed-websocket-9.0.41.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-webmvc/5.3.3/spring-webmvc-5.3.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/boot/spring-boot-starter-security/2.4.2/spring-boot-starter-security-2.4.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/security/spring-security-config/5.4.2/spring-security-config-5.4.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/security/spring-security-core/5.4.2/spring-security-core-5.4.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/security/spring-security-web/5.4.2/spring-security-web-5.4.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/derby/derbyclient/10.14.2.0/derbyclient-10.14.2.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/projectlombok/lombok/1.18.16/lombok-1.18.16.jar"/>

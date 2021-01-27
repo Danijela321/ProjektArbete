@@ -41,6 +41,16 @@ public class ExceptionHandare {
 			return new ResponseEntity<>(ourException,serverError);
 	    }
 
-
+	 @ExceptionHandler(value= {NotAuthorized.class})
+	    public final ResponseEntity<Object> handleUnexpectedExceptions3(Exception ex) {
+		 HttpStatus notAuth = HttpStatus.UNAUTHORIZED; // error 403
+			OurException ourException=new OurException(ex.getMessage(),
+					//e,  e=Throwable
+					notAuth,
+					ZonedDateTime.now(ZoneId.of("Europe/Stockholm"))); // här kan vi andra timestamp
+			
+			//2. return  respons entity
+			return new ResponseEntity<>(ourException,notAuth);
+	    }
 	
 }
