@@ -26,13 +26,25 @@ import com.webbutik.exception.OurServerException;
 import com.webbutik.service.CarService;
 import com.webbutik.service.ModelOfCarService;
 
+/**
+ * Mapping , satting path och requested body
+ * @author Danijela
+ *
+ */
 @RestController
 public class CarController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(CarController.class);
+	
 	@Autowired
 	private CarService service;
 
+	/**
+	 * @param car Objekt i tabell Car
+	 * @return Spara en car i tabell Car
+	 * @throws OurServerException Om bil finns i tabell metoder kastar exception darfor att man kan inte spara tva bilar med samma namn dvs.regNr.
+	 * @author Danijela
+	 */
 	@PostMapping("/saveCar")
 	public Car saveCar(@RequestBody Car car) throws OurServerException {
 		try {
@@ -43,103 +55,211 @@ public class CarController {
 		}
 	}
 
+	
+	/**
+	 * @return Alla bilar som fins i tabell Car
+	 * @author Danijela
+	 */
 	@GetMapping("/cars")
 	public List<Car> findAllCar() {
 		return service.getAllCar();
 	}
 
+	/**
+	 * @return Alla bilar som fins i tabell CAr men bara om admin skickar request
+	 * @author Danijela
+	 */
 	@GetMapping("/admin")
 	public List<Car> AdminfindAllCar() {
 		return service.getAllCar();
 	}
 
+	/**
+	 * @param id Id i tabell CAr
+	 * @return En bil med unik id
+	 * @author Danijela
+	 */
 	@GetMapping("/car/{id}")
 	public Car findCarById(@PathVariable int id) {
 		return service.getCarById(id);
 	}
 
+	/**
+	 * @param regNr Namn av bil
+	 * @return En bil med unik regNr
+	 * @author Danijela
+	 */
 	@GetMapping("/car/regNr/{regNr}")
 	public Car findCarByRegNr(@PathVariable String regNr) {
 		return service.getCarByRegNr(regNr);
 	}
+
+	/**
+	 * @param brand Volvo, Citroen, Ford...
+	 * @return Alla bilar med samma brand fran tabell CAr
+	 * @author Danijela
+	 */
 
 	@GetMapping("/cars/brand/{brand}")
 	public List<Car> getAllByBrand(@PathVariable Collection<String> brand) {// throws CarNotFound {
 		return service.getAllByBrand(brand);
 	}
 
+	/**
+	 * @param brandName Volvo, Citroen, Ford...
+	 * @param modelName  typ av model: m3, Clio,...
+	 * @return Alla bilar med samma brand och model
+	 * @author Danijela
+	 */
 	@GetMapping("car/brand/{brandName}/model/{modelName}")
 	public List<Car> findByBrandAndModel(@PathVariable Collection<String> brandName,
 			@PathVariable Collection<String> modelName) {
 		return service.getAllByBrandAndModel(brandName, modelName);
 	}
 
+	/**
+	 * @param price Prise som anvandare satter in
+	 * @return Alla bilar som ar billigare en prise som anvandare valde
+	 * @author Danijela
+	 */
 	@GetMapping("/car/BelowPrice/price/{price}")
 	public List<Car> findBelowPrice(@PathVariable Integer price) {
 		return service.getAllByBelowPrice(price);
 	}
 
+	/**
+	 * @param kilometer Kilimeter som anvandare valde
+	 * @return Alla bilar fran tabell Car som har mindre kilometer an de som anvandare skrev
+	 * @author Danijela
+	 */
 	@GetMapping("/car/BelowKilometer/{kilometer}")
 	public List<Car> findBelowKilometer(@PathVariable Integer kilometer) {
 		return service.getAllBelowKilometer(kilometer);
 	}
 
+	/**
+	
+	 * @param automatic Har eller ej automatisk växel
+	 * @return Alla bilar med automatisk vaxel
+	 * @author Danijela
+	 */
 	@GetMapping("/car/automatic/{automatic}")
 	public List<Car> findByAutomatic(@PathVariable boolean automatic) {
 		return service.getAllAutomatic(automatic);
 	}
 
+	/**
+	 * @param isRentable Kan man hyra ut dem
+	 * @return Alla bilar som man kan hyra ut om isRentable==true, alla bilar som man kan inte hyra ut om isRentable==false
+	 * @author Danijela
+	 */
 	@GetMapping("/car/rentable/isRentable/{isRentable}")
 	public List<Car> findByRentable(@PathVariable boolean isRentable) {
 		return service.getAllRentable(isRentable);
 	}
 
+	/**
+	 * 
+	 * @param navigation Har eller ej en bil navigation
+	 * @return Alla bilar som har(true) eller inte ha (false) navigation
+	 * @author Danijela
+	 */
 	@GetMapping("/car/hasNavigation/{navigation}")
 	public List<Car> findByNavigation(@PathVariable boolean navigation) {
 		return service.getAllWithNavigation(navigation);
 	}
 
+	/**
+	 * 
+	 * @param isNew Ar bil ny eller ej
+	 * @return Alla bilar som ar nya(true) eller inte nya (false)
+	 * @author Danijela
+	 */
 	@GetMapping("/car/nya/{isNew}")
 	public List<Car> findByNew(@PathVariable boolean isNew) {
 		return service.getAllNewCar(isNew);
 	}
 
+	/**
+	 * 
+	 * @param fuel bensin, gas...
+	 * @return Alla bilar som anvander samma typ av fuel
+	 * @author Danijela
+	 */
 	@GetMapping("/cars/fuel/{fuel}")
 	public List<Car> getAllCarByFuel(@PathVariable String fuel) {
 		return service.getAllWithSameFuel(fuel);
 	}
 
+	/**
+	 * 
+	 * @param brandName Volvo,Renault...
+	 * @param fuel  bensin, gas..
+	 * @return Alla bilar med samma brand och fuel
+	 * @author Danijela
+	 */
 	@GetMapping("car/brand/{brandName}/fuel/{fuel}")
 	public List<Car> getAllCarByBrandAndFuel(@PathVariable Collection<String> brandName,
 			@PathVariable Collection<String> fuel) {
 		return service.getAllWithSamaBrandAndFuel(brandName, fuel);
 	}
 
+	/**
+	 * 
+	 * @param brandName Volvo, Renault..
+	 * @param modelName m3, Clio....
+	 * @param fuel bensin, gas
+	 * @return Alla bilar som ar samma brand,model och anvander samma typ av fuel
+	 * @author Danijela
+	 */
 	@GetMapping("/car/brand/{brandName}/model/{modelName}/fuel/{fuel}")
 	public List<Car> getAllCarByBrandAndModelAndFuel(@PathVariable Collection<String> brandName,
 			@PathVariable Collection<String> modelName, @PathVariable Collection<String> fuel) {
 		return service.getAllWithSamaBrandModelAndFuel(brandName, modelName, fuel);
 	}
 
+	/**
+	 * 
+	 * @param car Uptadera pris,kilometer, isRentable, har navigation
+	 * @return updaterade car
+	 * @author Danijela
+	 */
 	@PutMapping("/updateCar")
 	public Car updateCar(@RequestBody Car car) {
 		return service.updateCar(car);
 	}
 
+	/**
+	 * 
+	 * @param yearProduce tilverkade ar
+	 * @return Alla bilar som ar tillverkad samma ar
+	 * @author Danijela
+	 */
 	@GetMapping("/cars/year/{yearProduce}")
 	public List<Car> getAllCarByYear(@PathVariable Integer yearProduce) {
 		return service.getAllCarByYear(yearProduce);
 	}
 
+	/**
+	 * 
+	 * @param color Farg
+	 * @return Alla bilar med samma farg
+	 * @author Danijela
+	 */
 	@GetMapping("/cars/color/{color}")
 	public List<Car> getAllCarByColor(@PathVariable String color) {
 		return service.getAllCarByColor(color);
 	}
 
-//	@GetMapping("/cars/{timeStored}")
-//	public List<Car> getAllCarByTimeStored(@PathVariable Date timeStored){
-//		return service.getAllByTimeStored(timeStored);
-//	}
+	/**
+	 * 
+	 * @param timeStored Nar bil kom till butik
+	 * @return En list av alla bilar som kom till butik med och efter date som anvandare valde
+	 */
+	@GetMapping("/cars/{timeStored}")
+	public List<Car> getAllCarByTimeStored(@PathVariable Date timeStored){
+		return service.getAllByTimeStored(timeStored);
+	}
 //	
 //	@PutMapping("/updateCarPris")
 //	public Car updatePrise(@RequestBody  Car car) {
@@ -157,11 +277,23 @@ public class CarController {
 //		return service.updateIsNewAndKilommeter(car);
 //	}
 
+	/**
+	 * 
+	 * @param id Id fran tabell
+	 * @return Radera bil pga unik id
+	 * @author Danijela
+	 */
 	@DeleteMapping("/delete/{id}")
 	public String deleteCarById(@PathVariable int id) {
 		return service.deleteCar(id);
 	}
 
+	/**
+	 * 
+	 * @param regNr registration nummer, dvs bils namn
+	 * @return Radera vil pga namn
+	 * @author Danijela
+	 */
 	@DeleteMapping("/delete/regNr/{regNr}")
 	public String deleteCarByRegNr(@PathVariable String regNr) {
 		return service.deleteCArByRegNr(regNr);

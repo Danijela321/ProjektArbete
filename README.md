@@ -4,7 +4,7 @@ Java 11
 
 Javadoc
 Spring Boot
-Hibernate 5
+Hibernate
 JPARepository med Spring Data JPA @Query annotation
 Derby databasen
 Vue.js

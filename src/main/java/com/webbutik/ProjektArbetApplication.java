@@ -5,6 +5,11 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
+/**
+ * Startar application
+ * @author Danijela
+ *
+ */
 @SpringBootApplication
 @EnableAutoConfiguration //(exclude = { SecurityAutoConfiguration.class })
 public class ProjektArbetApplication {

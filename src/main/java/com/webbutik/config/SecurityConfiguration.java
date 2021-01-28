@@ -17,12 +17,20 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.savedrequest.NullRequestCache;
 
+/**
+ * Sakrehet konfiguration for production version
+ * @author Danijela
+ *
+ */
 @Configuration
 @EnableWebSecurity //kaze spring boot securiti  da je ovo web securiti konfiguracija
 @Profile("production")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter  {
 
-	
+	/**
+	 * Stalla in konfiguration, typ av konfiguration, anvandare och losenord
+	 * @author Danijela
+	 */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
@@ -43,6 +51,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter  {
 	
 	// password saved i en encored format, da bi bili neotkriveni u slucaju provale
 	//to set password encored, use @Bean of type PasswordEncoder
+/**
+ * @author Danijela
+ * @return Losenord som ren text
+ * 
+ */
 	@Bean
 	public PasswordEncoder getPasswordEncoder() {
 		//ovo je encoder koji ne radi nista, znaci da
@@ -55,26 +68,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter  {
 	
 
 		
-	
+	/**
+	 * @author Danijela
+	 * Bestammer om  rätten till tillgång
+	 */
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
-//	     http
-//	.authorizeRequests()
-//	  .anyRequest().authenticated()
-//	    .and()
-//	     .formLogin()
-//	       .and()
-//	       .httpBasic();
 
-		
-		
-		//super.configure(http);
 		http.authorizeRequests()
 			
-		.antMatchers("/admin").hasRole("ADMIN")  /*all paths*/
-		.antMatchers("/**").hasAnyRole("USER", "ADMIN")
+		.antMatchers("/admin").hasRole("ADMIN") 
+		.antMatchers("/**").hasAnyRole("USER", "ADMIN")  /*all paths*/
 		.and().formLogin()
 		.and()
 	       .httpBasic(); //typ av login

@@ -19,10 +19,17 @@ import com.webbutik.exception.OurServerException;
 import com.webbutik.repository.CarRepository;
 import com.webbutik.repository.ModelOfCarRepository;
 
+/**
+ * Servis av Car
+ * @author Danijela
+ *
+ */
 @Transactional
 @Service
 public class CarService {
-	
+	/**
+	 * Loggning med hjalp av LoggerFactory.getLogger
+	 */
 	private static final Logger LOGGER = LoggerFactory.getLogger(CarService.class);
 	@Autowired
 	private CarRepository repository;
@@ -32,6 +39,13 @@ public class CarService {
 	private ModelOfCarRepository modelRepository;
 
 	//klart
+	/**
+	 * Skapar en ny bil i tabell car
+	 * @param car En ny bil
+	 * @return Skapar en ny bil i tabell car
+	 * @throws Exception Om Om bil finns i tabell metoder kastar exception darfor att man kan inte spara tva bilar med samma namn dvs.regNr.
+	 * @author Danijela
+	 */
 	public Car saveCar(Car car) throws Exception {
 		ModelOfCar modelofcar = new ModelOfCar();
 		String namnModelOfCar = modelofcar.getName();
@@ -48,6 +62,12 @@ public class CarService {
 	}
 
 	// klart
+	/**
+	 * List av alla bilar
+	 * @return List av alla bilar
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public List<Car> getAllCar() {
 		if (repository.findAll().isEmpty()) {
 			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat: Där finns inte bilar");
@@ -58,6 +78,13 @@ public class CarService {
 	}
 
 //klart
+	/**
+	 * List av alla bilar med samma brand
+	 * @param brand Volvo, Renault...
+	 * @return List av alla bilar med samma brand
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public List<Car> getAllByBrand(Collection<String> brand) {
 		if (repository.findByBrand(brand).isEmpty())
 		{LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Där finns inga bil med samma brand");
@@ -68,6 +95,14 @@ public class CarService {
 	}
 
 	// klart
+	/**
+	 * List av alla bilar med samma brand och model
+	 * @param brand Volvo, Renault...
+	 * @param model m3, Clio...
+	 * @return  List av alla bilar med samma brand och model
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public List<Car> getAllByBrandAndModel(Collection<String> brand, Collection<String> model) {
 		if (repository.findAllByBrandAndModel(brand, model).isEmpty())
 		{LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Där finns inga bil med samma brand och model");
@@ -77,6 +112,13 @@ public class CarService {
 	}
 
 	// klart
+	/**
+	 * Hamtar en bil fran tabell car pga unik id
+	 * @param id Unik id i tabell
+	 * @return En bil med exact id
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public Car getCarById(int id) {
 		if(repository.findById(id).isEmpty())
 			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat.Bil finns inte i tabell");
@@ -84,6 +126,13 @@ public class CarService {
 	}
 	
 //klart
+	/**
+	 *  Hamtar en bil fran tabell car pga unik regNr
+	 * @param regNr Unik registration nummer
+	 * @return En bil med exact regNr
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public Car getCarByRegNr(String regNr) {
 		if (repository.findByName(regNr) == null)
 		{LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Där finns inga bil med samma reg.numer");
@@ -93,6 +142,12 @@ public class CarService {
 	}
 
 	//klart
+	/**
+	 * Radera bil fran tabell car pga unik id
+	 * @param id Unik id i tabell car
+	 * @return Radera bil fran tabell car pga unik id
+	 * @author Danijela
+	 */
 	public String deleteCar(int id) {
 		//getCarByID testar bad request
 		getCarById(id);
@@ -101,6 +156,13 @@ public class CarService {
 	}
 
 	// klart
+	/**
+	 * Radera bil fran tabell car pga unik regNr
+	 * @param regNr Unik registration nummer i tabell car
+	 * @return Radera bil fran tabell car pga unik regNr
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public String deleteCArByRegNr(String regNr) {
 		Car gamlaCar = repository.findByName(regNr);
 		if (gamlaCar == null) {
@@ -113,6 +175,13 @@ public class CarService {
 
 	}
 //klart
+	/**
+	 * Updatera pris,kilometer, isRentable, har navigation av en bil pga regNr
+	 * @param car En bil 
+	 * @return Updatera pris,kilometer, isRentable, har navigation
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public Car updateCar(Car car) {
 		Car gamlaCar = repository.findByName(car.getRegNr());
 		
@@ -130,6 +199,13 @@ public class CarService {
 	}}
 
 	// klart
+	/**
+	 * En list av bilar som ar billigaste an prise som anvandare valjer
+	 * @param price Prise av bil
+	 * @return En list av bilar som ar billigaste an prise som anvandare valjer
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public List<Car> getAllByBelowPrice(Integer price) {
 		if (repository.findByBelowPrice(price).isEmpty())
 		{LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Där finns inga biligare bil");
@@ -139,6 +215,13 @@ public class CarService {
 	}
 
 	// klart
+	/**
+	 * En list av bilar som har mindre kilometer an kilometer som anvandare valde
+	 * @param kilometer Kilometer
+	 * @return En list av bilar som har mindre kilometer an kilometer som anvandare valde
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public List<Car> getAllBelowKilometer(Integer kilometer) {
 		if (repository.findBelowKilometer(kilometer).isEmpty())
 		{LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Där finns inga bil med mindre kilometer");
@@ -148,6 +231,13 @@ public class CarService {
 	}
 
 	//klart
+	/**
+	 * List av bilar som har eller inte har automatisk vaxel
+	 * @param automatic Automatisk vaxel 
+	 * @return alla bilar som har eller inte har automatisk vaxel
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public List<Car> getAllAutomatic(boolean automatic) {
 		if (repository.findIsAutomatic(automatic).isEmpty())
 		{LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Där finns inga automatic bil");
@@ -157,6 +247,13 @@ public class CarService {
 	}
 
 	//klart
+	/**
+	 * List av bilar som man kan eller inte kan hyra ut
+	 * @param isRentable Kan man hyra ut dem
+	 * @return Alla bilar som man kan (true) eller inte kan (false) hyra ut
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public List<Car> getAllRentable(boolean isRentable) {
 		if (repository.findAllRentable(isRentable).isEmpty()) {
 			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Där finns inga bil som man kan hyra ut");
@@ -166,6 +263,13 @@ public class CarService {
 	}
 
 	//klart
+	/**
+	 * Alla bilar som har(true) eller inte ha (false) navigation
+	 * @param navigation Har eller ej en bil navigation
+	 * @return Alla bilar som har(true) eller inte ha (false) navigation
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public List<Car> getAllWithNavigation(boolean navigation) {
 		if (repository.findAllWithNavigation(navigation).isEmpty()) {
 			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Där finns inga bil med navigation");
@@ -175,6 +279,13 @@ public class CarService {
 	}
 
 	//klart
+	/**
+	 * Alla bilar som ar nya(true) eller inte nya (false)
+	 * @param isNew Ar bil ny eller begagnade
+	 * @return Alla bilar som ar nya(true) eller inte nya (false)
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public List<Car> getAllNewCar(boolean isNew) {
 		if (repository.findAllNewCar(isNew).isEmpty()) {
 			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Där finns inga nya bil");
@@ -184,6 +295,13 @@ public class CarService {
 	}
 
 	//klart
+	/**
+	 * List bilar som anvander samma typ av fuel
+	 * @param fuel Bensin, gas...
+	 * @return Alla bilar som anvander samma typ av fuel
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public List<Car> getAllWithSameFuel(String fuel) {
 		if (repository.findAllCarWithSameFuel(fuel).isEmpty())
 		{LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Där finns inga bil med samma fuel");
@@ -193,6 +311,14 @@ public class CarService {
 	}
 
 	//klart
+	/**
+	 * Alla bilar med samma brand och fuel
+	 * @param brandName Volvo, Renault...
+	 * @param fuel Bensin, gas...
+	 * @return Alla bilar med samma brand och fuel
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public List<Car> getAllWithSamaBrandAndFuel(Collection<String> brandName, Collection<String> fuel) {
 		if (repository.findAllByBrandAndFuel(brandName, fuel).isEmpty()) {
 			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Där finns inga bil med samma brand ochfuel");
@@ -202,6 +328,15 @@ public class CarService {
 	}
 
 	//klart
+	/**
+	 * Alla bilar som ar samma brand,model och anvander samma typ av fuel
+	 * @param brandName Volvo, Renault..
+	 * @param modelName m3, Clio...
+	 * @param fuel Bensin, gas...
+	 * @return Alla bilar som ar samma brand,model och anvander samma typ av fuel
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public List<Car> getAllWithSamaBrandModelAndFuel(Collection<String> brandName, Collection<String> modelName,
 			Collection<String> fuel) {
 		if (repository.findAllByBrandModelAndFuel(brandName, modelName, fuel).isEmpty()) {
@@ -212,6 +347,13 @@ public class CarService {
 	}
 
 	//klart
+	/**
+	 * Alla bilar som ar tillverkad samma ar
+	 * @param yearProduce
+	 * @return List av bilar som ar tillverkad samma ar
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public List<Car> getAllCarByYear(Integer yearProduce) {
 		if (repository.findCarsByYear(yearProduce).isEmpty()) {
 			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Där finns inga bil som är gjort detta år");
@@ -221,6 +363,13 @@ public class CarService {
 	}
 
 	//klart
+	/**
+	 * Alla bilar med samma farg
+	 * @param color Farg
+	 * @return List av bilar med samma farg
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public List<Car> getAllCarByColor(String color) {
 		if (repository.findCarsByColor(color).isEmpty()) {
 			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Där finns inga bil med samma färg");
@@ -229,6 +378,13 @@ public class CarService {
 			return repository.findCarsByColor(color);
 	}
 
+	/**
+	 * Alla bilar som kom till butik med och efter date som anvandare valde
+	 * @param timeStored Nar bil kom till butik
+	 * @return En list av alla bilar som kom till butik med och efter date som anvandare valde
+	 * @throw Exception Om bil finns inte i tabell kastar metoder exception: OurCustomExceptions.
+	 * @author Danijela
+	 */
 	public List<Car> getAllByTimeStored(Date timeStored) {
 		if (repository.findCarByTimeStored(timeStored).isEmpty()) {
 			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Där finns inga bilsom ligger på lager mindre tid");

@@ -1,15 +1,29 @@
 package com.webbutik.exception;
+/**
+ * Ta hand om SQL exception pga violation of foreign key
+ * @author Danijela
+ *
+ */
 
 public class OurServerException extends Exception {
-
+/**
+ * Konstruktor fran Superklass
+ * @param message Skickar meddelande till anvandare
+ * 
+ */
 	public OurServerException(String message, Throwable cause) {
 		super(message, cause);
-		// TODO Auto-generated constructor stub
+		
 	}
 
+	/**
+	 *
+	 * Konstruktor fran Superklass
+	 * @param message Skickar meddelande till anvandare
+	 */
 	public OurServerException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
+	
 	}
 
 }
