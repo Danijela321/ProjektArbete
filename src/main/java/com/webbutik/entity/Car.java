@@ -53,7 +53,7 @@ public class Car {
 	private ModelOfCar modelOfCarName;
 
 	/**
-	 * 
+	 * Get model av bil
 	 * @return model of car
 	 *  @author Danijela
 	 */
@@ -62,7 +62,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Satter en model of car
 	 * @param modelOfCarName Satter en model of car
 	 *  @author Danijela
 	 */
@@ -116,7 +116,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Get name
 	 * @return namn av bilen, dvs.reg.nr
 	 */
 	public String getName() {
@@ -124,7 +124,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Set name
 	 * @param name namn av bilen
 	 */
 	public void setName(String name) {
@@ -132,7 +132,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Get id
 	 * @return unik id fran databasen
 	 */
 	public int getId() {
@@ -140,7 +140,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Set id
 	 * @param id unik id i databasen
 	 */
 	public void setId(int id) {
@@ -148,7 +148,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Get registration nummer
 	 * @return namn av bilen
 	 */
 	public String getRegNr() {
@@ -156,7 +156,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Set registration nummer
 	 * @param regNr namn av bilen
 	 */
 	public void setRegNr(String regNr) {
@@ -164,7 +164,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Get brand av bil
 	 * @return brand av bilen
 	 */
 	public String getBrandName() {
@@ -172,7 +172,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Set brand av bil
 	 * @param brandName Volvo, Renault..
 	 */
 	public void setBrandName(String brandName) {
@@ -180,7 +180,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Get namn av model av bil
 	 * @return typ av bil model
 	 */
 	public String getModelName() {
@@ -188,7 +188,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Set namn av model av bil
 	 * @param modelName Clio, m3, Focus...
 	 */
 	public void setModelName(String modelName) {
@@ -196,7 +196,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Get tillverkade ar
 	 * @return year
 	 */
 	public int getYearProduce() {
@@ -204,7 +204,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Set tillverkade ar
 	 * @param yearProduce Ar när bilen ar tillverkad
 	 */
 	public void setYearProduce(int yearProduce) {
@@ -212,7 +212,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Get fuel
 	 * @return fuel
 	 */
 	public String getFuel() {
@@ -220,7 +220,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Set fuel
 	 * @param fuel bensin, gas..
 	 */
 	public void setFuel(String fuel) {
@@ -228,7 +228,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Get farg
 	 * @return farg
 	 */
 	public String getColor() {
@@ -236,7 +236,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Set farg
 	 * @param color vit, gron...
 	 */
 	public void setColor(String color) {
@@ -244,7 +244,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Get prise
 	 * @return prise
 	 */
 	public int getPrice() {
@@ -252,7 +252,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Set prise
 	 * @param price Storsta pris som anvandare valjer
 	 */
 	public void setPrice(int price) {
@@ -260,7 +260,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Get kilometer
 	 * @return kilometer
 	 */
 	public int getKilometer() {
@@ -268,7 +268,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Set kilometer
 	 * @param kilometer Storsta kilometer som anvandare valjer
 	 */
 	public void setKilometer(int kilometer) {
@@ -276,7 +276,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Get ar/ej ny
 	 * @return true/ false
 	 */
 	public boolean isNew() {
@@ -284,7 +284,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Set ar/ej ny
 	 * @param isNew ar bilen ny eller ej
 	 */
 	public void setNew(boolean isNew) {
@@ -292,7 +292,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Get har/ej har navigation
 	 * @return true/ false
 	 */
 	public boolean isNavigation() {
@@ -300,7 +300,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Set har/ej har navigation
 	 * @param navigation Har eller ej navigation
 	 */
 	public void setNavigation(boolean navigation) {
@@ -308,7 +308,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Get ar/ej automatisk vaxel
 	 * @return true/false
 	 */
 	public boolean isAutomatic() {
@@ -316,7 +316,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Set ar/ej automatisk vaxel
 	 * @param automatic Har eller ej automatiskt vaxle
 	 */
 	public void setAutomatic(boolean automatic) {
@@ -324,14 +324,14 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Get Kan man eller ej hyra ut bilen
 	 * @return true/false
 	 */
 	public boolean isRentable() {
 		return isRentable;
 	}
 /**
- * 
+ * Set Kan man eller ej hyra ut bilen
  * @param isRentable Kan man eller ej hyra ut bilen
  */
 	public void setRentable(boolean isRentable) {
@@ -339,7 +339,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Get nar bilen ko till butik
 	 * @return Date
 	 */
 	public Date getTimeStored() {
@@ -347,7 +347,7 @@ public class Car {
 	}
 
 	/**
-	 * 
+	 * Set nar bilen ko till butik
 	 * @param timeStored Nar bilen ko till butik
 	 */
 	public void setTimeStored(Date timeStored) {

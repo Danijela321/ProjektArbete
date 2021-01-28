@@ -1,6 +1,5 @@
 package com.webbutik.config;
 
-import static org.springframework.test.web.client.response.MockRestResponseCreators.withUnauthorizedRequest;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -52,6 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter  {
 	// password saved i en encored format, da bi bili neotkriveni u slucaju provale
 	//to set password encored, use @Bean of type PasswordEncoder
 /**
+ * Losenord som ren text
  * @author Danijela
  * @return Losenord som ren text
  * 
@@ -69,8 +69,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter  {
 
 		
 	/**
-	 * @author Danijela
 	 * Bestammer om  rätten till tillgång
+	 * @author Danijela
+	 * 
 	 */
 
 	@Override

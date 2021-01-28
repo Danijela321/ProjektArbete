@@ -10,7 +10,7 @@ public class NotAuthorized  extends RuntimeException{
 	/**
 	 * Konstruktor fran Superklass
 	 * @param message Skickar meddelande till anvandare
-	 * 
+	 * @param cause not authorized
 	 */
 	public NotAuthorized(String message, Throwable cause) {
 		super(message, cause);

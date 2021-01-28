@@ -13,9 +13,9 @@ import com.webbutik.entity.ModelOfCar;
 @Repository
 public interface ModelOfCarRepository extends JpaRepository<ModelOfCar, Integer>{
 /**
- * 
+ * Typ av model
  * @param name Typ av model: m3, Clio
- * @return
+ * @return Model av bil
  */
 	ModelOfCar findByName(String name);	
 

@@ -100,7 +100,7 @@ public class ModelOfCarService {
 	 * Hittar en model i tabell model_of_car
 	 * @param name Model namn: Clio,m3, Focus...
 	 * @return En model fron tabel model_of_car
-	 * @throw OurCustomExceptions Kastar exception om man prova hamta model som inte finns i tabell
+	 * @throws OurCustomExceptions Kastar exception om man prova hamta model som inte finns i tabell
 	 * @author Danijela
 	 */
 	public ModelOfCar getModelByName(String name) {

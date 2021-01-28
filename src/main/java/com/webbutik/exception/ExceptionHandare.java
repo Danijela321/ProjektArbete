@@ -19,7 +19,7 @@ public class ExceptionHandare {
 	//vi handlar custom exception
 	//argument exception som är skapad
 	/**
-	 * 
+	 * HttpStatus.BAD_REQUEST
 	 * @param e RuntimeException
 	 * @return en ny ResponseEntity
 	 * @author Danijela
@@ -40,7 +40,7 @@ public class ExceptionHandare {
 	}	
 	
 	/**
-	 * 
+	 * HttpStatus.INTERNAL_SERVER_ERROR
 	 * @param ex Exception
 	 * @return en ny ResponseEntity
 	 * @author Danijela
@@ -58,7 +58,7 @@ public class ExceptionHandare {
 	    }
 
 	 /**
-	  * 
+	  * HttpStatus.UNAUTHORIZED
 	  * @param ex RuntimeException
 	  * @return en ny ResponseEntity
 	  * @author Danijela

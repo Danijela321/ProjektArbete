@@ -1,6 +1,6 @@
 package com.webbutik.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 
 import java.util.Collection;
 import java.util.Date;
@@ -40,6 +40,7 @@ public class CarController {
 	private CarService service;
 
 	/**
+	 * Spara en car i tabell Car
 	 * @param car Objekt i tabell Car
 	 * @return Spara en car i tabell Car
 	 * @throws OurServerException Om bil finns i tabell metoder kastar exception darfor att man kan inte spara tva bilar med samma namn dvs.regNr.
@@ -57,7 +58,8 @@ public class CarController {
 
 	
 	/**
-	 * @return Alla bilar som fins i tabell Car
+	 * Alla bilar som fins i tabell Car
+	 * @return List av alla bilar som fins i tabell Car
 	 * @author Danijela
 	 */
 	@GetMapping("/cars")
@@ -66,7 +68,8 @@ public class CarController {
 	}
 
 	/**
-	 * @return Alla bilar som fins i tabell CAr men bara om admin skickar request
+	 * Alla bilar som fins i tabell Car men bara om admin skickar request
+	 * @return List av alla bilar som fins i tabell Car men bara om admin skickar request
 	 * @author Danijela
 	 */
 	@GetMapping("/admin")
@@ -75,6 +78,7 @@ public class CarController {
 	}
 
 	/**
+	 * En bil med unik id
 	 * @param id Id i tabell CAr
 	 * @return En bil med unik id
 	 * @author Danijela
@@ -85,6 +89,7 @@ public class CarController {
 	}
 
 	/**
+	 * En bil med unik regNr
 	 * @param regNr Namn av bil
 	 * @return En bil med unik regNr
 	 * @author Danijela
@@ -95,8 +100,9 @@ public class CarController {
 	}
 
 	/**
+	 * Alla bilar med samma brand fran tabell CAr
 	 * @param brand Volvo, Citroen, Ford...
-	 * @return Alla bilar med samma brand fran tabell CAr
+	 * @return List av bilar med samma brand fran tabell CAr
 	 * @author Danijela
 	 */
 
@@ -106,9 +112,10 @@ public class CarController {
 	}
 
 	/**
+	 * Alla bilar med samma brand och model
 	 * @param brandName Volvo, Citroen, Ford...
 	 * @param modelName  typ av model: m3, Clio,...
-	 * @return Alla bilar med samma brand och model
+	 * @return List av bilar med samma brand och model
 	 * @author Danijela
 	 */
 	@GetMapping("car/brand/{brandName}/model/{modelName}")
@@ -118,8 +125,9 @@ public class CarController {
 	}
 
 	/**
+	 * Alla bilar som ar billigare en prise som anvandare valde
 	 * @param price Prise som anvandare satter in
-	 * @return Alla bilar som ar billigare en prise som anvandare valde
+	 * @return List av bilar som ar billigare en prise som anvandare valde
 	 * @author Danijela
 	 */
 	@GetMapping("/car/BelowPrice/price/{price}")
@@ -128,8 +136,9 @@ public class CarController {
 	}
 
 	/**
+	 * Alla bilar fran tabell Car som har mindre kilometer an de som anvandare skrev
 	 * @param kilometer Kilimeter som anvandare valde
-	 * @return Alla bilar fran tabell Car som har mindre kilometer an de som anvandare skrev
+	 * @return List bilar fran tabell Car som har mindre kilometer an de som anvandare skrev
 	 * @author Danijela
 	 */
 	@GetMapping("/car/BelowKilometer/{kilometer}")
@@ -138,9 +147,9 @@ public class CarController {
 	}
 
 	/**
-	
+	 * Alla bilar med automatisk vaxel
 	 * @param automatic Har eller ej automatisk växel
-	 * @return Alla bilar med automatisk vaxel
+	 * @return List av bilar med automatisk vaxel
 	 * @author Danijela
 	 */
 	@GetMapping("/car/automatic/{automatic}")
@@ -149,8 +158,9 @@ public class CarController {
 	}
 
 	/**
+	 * Alla bilar som man kan eller inte kan hyra ut
 	 * @param isRentable Kan man hyra ut dem
-	 * @return Alla bilar som man kan hyra ut om isRentable==true, alla bilar som man kan inte hyra ut om isRentable==false
+	 * @return List av bilar som man kan hyra ut om isRentable==true, alla bilar som man kan inte hyra ut om isRentable==false
 	 * @author Danijela
 	 */
 	@GetMapping("/car/rentable/isRentable/{isRentable}")
@@ -159,9 +169,9 @@ public class CarController {
 	}
 
 	/**
-	 * 
+	 * Alla bilar som har eller inte ha navigation
 	 * @param navigation Har eller ej en bil navigation
-	 * @return Alla bilar som har(true) eller inte ha (false) navigation
+	 * @return List av bilar som har(true) eller inte ha (false) navigation
 	 * @author Danijela
 	 */
 	@GetMapping("/car/hasNavigation/{navigation}")
@@ -170,9 +180,9 @@ public class CarController {
 	}
 
 	/**
-	 * 
+	 * Alla bilar som ar nya eller begagnade
 	 * @param isNew Ar bil ny eller ej
-	 * @return Alla bilar som ar nya(true) eller inte nya (false)
+	 * @return List av bilar som ar nya(true) eller inte nya (false)
 	 * @author Danijela
 	 */
 	@GetMapping("/car/nya/{isNew}")
@@ -181,9 +191,9 @@ public class CarController {
 	}
 
 	/**
-	 * 
+	 * Alla bilar som anvander samma typ av fuel
 	 * @param fuel bensin, gas...
-	 * @return Alla bilar som anvander samma typ av fuel
+	 * @return List av bilar som anvander samma typ av fuel
 	 * @author Danijela
 	 */
 	@GetMapping("/cars/fuel/{fuel}")
@@ -192,10 +202,10 @@ public class CarController {
 	}
 
 	/**
-	 * 
+	 * Alla bilar med samma brand och fuel
 	 * @param brandName Volvo,Renault...
 	 * @param fuel  bensin, gas..
-	 * @return Alla bilar med samma brand och fuel
+	 * @return List av bilar med samma brand och fuel
 	 * @author Danijela
 	 */
 	@GetMapping("car/brand/{brandName}/fuel/{fuel}")
@@ -205,11 +215,11 @@ public class CarController {
 	}
 
 	/**
-	 * 
+	 * Alla bilar som ar samma brand,model och anvander samma typ av fuel
 	 * @param brandName Volvo, Renault..
 	 * @param modelName m3, Clio....
 	 * @param fuel bensin, gas
-	 * @return Alla bilar som ar samma brand,model och anvander samma typ av fuel
+	 * @return List av bilar som ar samma brand,model och anvander samma typ av fuel
 	 * @author Danijela
 	 */
 	@GetMapping("/car/brand/{brandName}/model/{modelName}/fuel/{fuel}")
@@ -219,8 +229,8 @@ public class CarController {
 	}
 
 	/**
-	 * 
-	 * @param car Uptadera pris,kilometer, isRentable, har navigation
+	 * Uptadera pris,kilometer, isRentable, har navigation
+	 * @param car Uptadera pris,kilometer, isRentable, har navigation av en car
 	 * @return updaterade car
 	 * @author Danijela
 	 */
@@ -230,9 +240,9 @@ public class CarController {
 	}
 
 	/**
-	 * 
+	 * Alla bilar som ar tillverkad samma ar
 	 * @param yearProduce tilverkade ar
-	 * @return Alla bilar som ar tillverkad samma ar
+	 * @return List av bilar som ar tillverkad samma ar
 	 * @author Danijela
 	 */
 	@GetMapping("/cars/year/{yearProduce}")
@@ -241,9 +251,9 @@ public class CarController {
 	}
 
 	/**
-	 * 
+	 * Alla bilar med samma farg
 	 * @param color Farg
-	 * @return Alla bilar med samma farg
+	 * @return List av bilar med samma farg
 	 * @author Danijela
 	 */
 	@GetMapping("/cars/color/{color}")
@@ -252,7 +262,7 @@ public class CarController {
 	}
 
 	/**
-	 * 
+	 * Alla bilar som kom till butik med och efter date som anvandare valde
 	 * @param timeStored Nar bil kom till butik
 	 * @return En list av alla bilar som kom till butik med och efter date som anvandare valde
 	 */
@@ -278,7 +288,7 @@ public class CarController {
 //	}
 
 	/**
-	 * 
+	 * Radera bil pga unik id
 	 * @param id Id fran tabell
 	 * @return Radera bil pga unik id
 	 * @author Danijela
@@ -289,9 +299,9 @@ public class CarController {
 	}
 
 	/**
-	 * 
+	 * Radera bil pga namn
 	 * @param regNr registration nummer, dvs bils namn
-	 * @return Radera vil pga namn
+	 * @return Radera bil pga namn
 	 * @author Danijela
 	 */
 	@DeleteMapping("/delete/regNr/{regNr}")

@@ -9,9 +9,9 @@ package com.webbutik.exception;
 public class OurCustomExceptions extends RuntimeException{
 
 	/**
-	 * Konstruktor fran Superklass
+	  *Konstruktor fran Superklass
 	 * @param message Skickar meddelande till anvandare
-	 * 
+	 * @param cause Finns i tabell eller inte finns i tabell
 	 */
 	public OurCustomExceptions(String message, Throwable cause) {
 		super(message, cause);

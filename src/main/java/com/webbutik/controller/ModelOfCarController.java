@@ -33,9 +33,9 @@ public class ModelOfCarController {
 	private ModelOfCarService service;
 
 	/**
-	 * 
+	 * Skapa en model av bil i modelOfCAr tabell
 	 * @param modelOfCar Clio, Focus, m3...
-	 * @return Spara en model av bil i modelOfCAr tabell
+	 * @return Skapa en model av bil i modelOfCAr tabell
 	 * @throws OurServerException Om model finns i tabell kastar metoden exception
 	 * @author Danijela
 	 */
@@ -50,9 +50,9 @@ public class ModelOfCarController {
 	}
 
 	/**
-	 * 
+	 * Radera model av bil pga unik id
 	 * @param id Id i tabell
-	 * @return Radera bil pga unik id
+	 * @return String med meddelande att model av bil är raderad
 	 * @throws OurServerException Om model finns inte i tabell eller denna model finns i tabell Car
 	 * kastar metoden exceprion pga sql exception(violation of foreign key)
 	 * @author Danijela
@@ -68,9 +68,9 @@ public class ModelOfCarController {
 	}
 
 	/**
-	 * 
+	 * Radera model av bil pga unik name, dvs pga typ av model
 	 * @param name model av bil
-	 * @return radera bil pga unik name, dvs pga typ av model
+	 * @return String med meddelande att model av bil är raderad
 	 * @throws OurServerException Om model finns inte i tabell eller denna model finns i tabell Car
 	 * kastar metoden exceprion pga sql exception(violation of foreign key)
 	 * @author Danijela
@@ -86,7 +86,7 @@ public class ModelOfCarController {
 	}
 
 	/**
-	 * 
+	 * Hamta en model av bil pga namn
 	 * @param name model av bil
 	 * @return en model av bil pga namn
 	 * @author Danijela

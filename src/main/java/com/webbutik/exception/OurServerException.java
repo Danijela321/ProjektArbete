@@ -6,11 +6,13 @@ package com.webbutik.exception;
  */
 
 public class OurServerException extends Exception {
-/**
- * Konstruktor fran Superklass
- * @param message Skickar meddelande till anvandare
- * 
- */
+
+	/**
+	 * 
+	* Konstruktor fran Superklass
+	* @param message Skickar meddelande till anvandare
+	* @param cause SQL exception (violation of foreign key)
+	 */
 	public OurServerException(String message, Throwable cause) {
 		super(message, cause);
 		

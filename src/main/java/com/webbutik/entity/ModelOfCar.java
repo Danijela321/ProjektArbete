@@ -45,7 +45,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Konstruktor av model_of_car entity
 	 * @param name typ av model av bil
 	 * @param power Hur mycket kraft harbilen
 	 * @param length Hur langd ar bilen
@@ -69,7 +69,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Set unik id fan databas( gör databas automatisk)
 	 * @param id Unik id fran databasen
 	 */
 	public void setId(int id) {
@@ -77,7 +77,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Set namn av model
 	 * @param name typ av model
 	 */
 	public void setName(String name) {
@@ -85,7 +85,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Set mootor kraft av model
 	 * @param power Kraft
 	 */
 	public void setPower(int power) {
@@ -93,7 +93,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Set langd
 	 * @param length langd 
 	 */
 	public void setLength(int length) {
@@ -101,7 +101,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Set bredd
 	 * @param width bredd
 	 */
 	public void setWidth(int width) {
@@ -109,7 +109,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Set hojd
 	 * @param height Hojd
 	 */
 	public void setHeight(int height) {
@@ -117,7 +117,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Set hjulbas
 	 * @param weelBase Hjulbas
 	 */
 	public void setWeelBase(int weelBase) {
@@ -125,7 +125,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Set sittplats
 	 * @param seat Sittplats
 	 */
 	public void setSeat(int seat) {
@@ -133,7 +133,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Set antal av dorrar
 	 * @param doors Dorrar
 	 */
 	public void setDoors(int doors) {
@@ -141,7 +141,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 /**
- * 
+ * Get namn av model av bil
  * @param name typ av model
  */
 	public ModelOfCar(String name) {
@@ -149,7 +149,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Get name
 	 * @return typ av model
 	 */
 	public String getName() {
@@ -157,7 +157,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Get antal av sittplatser
 	 * @return antal av sittplatser
 	 */
 	public int getSeat() {
@@ -165,7 +165,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Get antal av dorrar
 	 * @return antal av dorrar
 	 */
 	public int getDoors() {
@@ -173,7 +173,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Get unik id
 	 * @return unik id fran databasen
 	 */
 	public int getId() {
@@ -181,7 +181,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Get motor kraft
 	 * @return Kraft
 	 */
 	public int getPower() {
@@ -189,7 +189,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Get langd
 	 * @return langd
 	 */
 	public int getLength() {
@@ -197,7 +197,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Get bredd
 	 * @return bredd
 	 */
 	public int getWidth() {
@@ -205,7 +205,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Get hojd
 	 * @return hojd
 	 */
 	public int getHeight() {
@@ -213,7 +213,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Get hjulbas
 	 * @return hjulbas
 	 */
 	public int getWeelBase() {

@@ -17,8 +17,8 @@ public class OurException {
 
 
 /**
- * 
- * @param message Message som anvandare vill fa
+ * Element av meddelande som anvandare vill fa
+ * @param message Meddelande som anvandare vill fa
  * @param httpstatus Vilken fel hander
  * @param timeStamp  Tid när fel hander
  * @author Danijela
@@ -32,7 +32,7 @@ public class OurException {
 	}
 	
 	/**
-	 * 
+	 * Get meddelande
 	 * @return meddelande
 	 */
 	public String getMessage() {
@@ -42,19 +42,24 @@ public class OurException {
 //		return throwable;
 //	}
 	/**
-	 * 
+	 * Get Httpstatus
 	 * @return Httpstatus t.ex BAD_REQUEST, INTERNAL_SERVER_ERROR
 	 */
 	public HttpStatus getHttpstatus() {
 		return httpstatus;
 	}
 	/**
-	 * 
+	 * Get Tid av Europe/Stockholm zone
 	 * @return Tid av Europe/Stockholm zone
 	 */
 	public ZonedDateTime getTimeStamp() {
 		return timeStamp;
 	}
+	
+	/**
+	 * Get Tid av Europe/Stockholm zone
+	 * @return Tid av Europe/Stockholm zone
+	 */
 	public ZonedDateTime getTimestamp() {
 		return timeStamp;
 	}

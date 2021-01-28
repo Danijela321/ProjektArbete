@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.webbutik"},{"l":"com.webbutik.config"},{"l":"com.webbutik.controller"},{"l":"com.webbutik.entity"},{"l":"com.webbutik.exception"},{"l":"com.webbutik.repository"},{"l":"com.webbutik.service"}]
