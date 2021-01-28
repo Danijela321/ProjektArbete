@@ -22,6 +22,7 @@ import com.webbutik.config.SecurityConfiguration;
 import com.webbutik.entity.Car;
 import com.webbutik.entity.ModelOfCar;
 import com.webbutik.exception.NotAuthorized;
+import com.webbutik.exception.OurCustomExceptions;
 import com.webbutik.exception.OurServerException;
 import com.webbutik.service.CarService;
 import com.webbutik.service.ModelOfCarService;
@@ -47,12 +48,13 @@ public class CarController {
 	 * @author Danijela
 	 */
 	@PostMapping("/saveCar")
-	public Car saveCar(@RequestBody Car car) throws OurServerException {
+	public Car saveCar(@RequestBody Car car) {
 		try {
 			return service.saveCar(car);
 		} catch (Exception e) {
 			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat.Bil finns  i tabell");
-			throw new OurServerException("Bil finns  i tabell.");
+			//throw new OurServerException("Bil finns  i tabell.");
+			throw new OurCustomExceptions("Bil finns i tabell");
 		}
 	}
 

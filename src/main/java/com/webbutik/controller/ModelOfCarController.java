@@ -40,12 +40,13 @@ public class ModelOfCarController {
 	 * @author Danijela
 	 */
 	@PostMapping("/saveModel")
-	public ModelOfCar saveModel(@RequestBody ModelOfCar modelOfCar) throws OurServerException {
+	public ModelOfCar saveModel(@RequestBody ModelOfCar modelOfCar)  {
 		try {
 			return service.saveModel(modelOfCar);
 		} catch (Exception e) {
 			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat");
-			throw new OurServerException("Model finns  i tabell!");
+			//throw new OurServerException("Model finns  i tabell!");
+			throw new OurCustomExceptions("Model finns i tabell");
 		}
 	}
 

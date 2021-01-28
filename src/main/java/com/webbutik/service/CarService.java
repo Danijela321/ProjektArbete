@@ -46,7 +46,7 @@ public class CarService {
 	 * @throws Exception Om Om bil finns i tabell metoder kastar exception darfor att man kan inte spara tva bilar med samma namn dvs.regNr.
 	 * @author Danijela
 	 */
-	public Car saveCar(Car car) throws Exception {
+	public Car saveCar(Car car)  {
 		ModelOfCar modelofcar = new ModelOfCar();
 		String namnModelOfCar = modelofcar.getName();
 		namnModelOfCar = car.getModelName();
@@ -58,8 +58,8 @@ public class CarService {
 		car.setModelOfCarName(modelofcar);
 		return repository.save(car);}
 		else
-		//	throw new OurServerException("Bil finns  i tabell");
-			throw new OurCustomExceptions("Bilar finns i tabell");
+		
+			throw new OurCustomExceptions("Bil finns i tabell");
 	}
 
 	// klart

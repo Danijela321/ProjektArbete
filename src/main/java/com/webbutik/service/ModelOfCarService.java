@@ -41,13 +41,14 @@ public class ModelOfCarService {
 	 * @throws Exception Metoder kastar exceptions om man vill skapa en model som redan finns i tabell
 	 * @author Danijela
 	 */
-	public ModelOfCar saveModel(ModelOfCar modelOfCar) throws Exception {
+	public ModelOfCar saveModel(ModelOfCar modelOfCar)  {
 		ModelOfCar existingModel = repository.findByName(modelOfCar.getName());
 		if (existingModel == null)
 			return repository.save(modelOfCar);
 		else
 			{
-			throw new OurServerException("Model finns  i tabell");}
+		//	throw new OurServerException("Model finns  i tabell");}
+			throw new OurCustomExceptions("Model finns i tabell");}
 
 	}
 
