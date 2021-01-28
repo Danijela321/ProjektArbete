@@ -46,7 +46,7 @@ public class ExceptionHandare {
 	 * @author Danijela
 	 */
 	 @ExceptionHandler(value= {OurServerException.class})
-	    public final ResponseEntity<Object> handleUnexpectedExceptions(Exception ex) {
+	    public final ResponseEntity<Object> handleUnexpectedExceptions(OurServerException ex) {
 		 HttpStatus serverError = HttpStatus.INTERNAL_SERVER_ERROR; //internal server error 500
 			OurException ourException=new OurException(ex.getMessage(),
 					//e,  e=Throwable
@@ -64,7 +64,7 @@ public class ExceptionHandare {
 	  * @author Danijela
 	  */
 	 @ExceptionHandler(value= {NotAuthorized.class})
-	    public final ResponseEntity<Object> handleUnexpectedExceptions3(Exception ex) {
+	    public final ResponseEntity<Object> handleUnexpectedExceptions3(NotAuthorized ex) {
 		 HttpStatus notAuth = HttpStatus.UNAUTHORIZED; // error 403
 			OurException ourException=new OurException(ex.getMessage(),
 					//e,  e=Throwable

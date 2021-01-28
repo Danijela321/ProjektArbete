@@ -45,7 +45,7 @@ public class ModelOfCarController {
 			return service.saveModel(modelOfCar);
 		} catch (Exception e) {
 			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat");
-			throw new OurServerException("Tyvärr kan model inte raderas!");
+			throw new OurServerException("Model finns  i tabell!");
 		}
 	}
 

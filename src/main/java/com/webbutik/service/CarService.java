@@ -58,7 +58,8 @@ public class CarService {
 		car.setModelOfCarName(modelofcar);
 		return repository.save(car);}
 		else
-			throw new OurServerException("Bil finns  i tabell");
+		//	throw new OurServerException("Bil finns  i tabell");
+			throw new OurCustomExceptions("Bilar finns i tabell");
 	}
 
 	// klart
