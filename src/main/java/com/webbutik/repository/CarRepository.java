@@ -63,7 +63,6 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
 	@Query(value = "SELECT u FROM Car u WHERE u.timeStored <= :timeStored")
 	List<Car> findCarByTimeStored(@Param("timeStored") Date timeStored);
 
-	
 	@Query(value = "SELECT u FROM Car u WHERE u.modelName IN :modelNames")
 	List<Car> findCarsByModelName(@Param("modelNames") String modelName);
 

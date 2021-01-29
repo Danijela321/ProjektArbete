@@ -114,7 +114,7 @@ public class CarService {
 	}
 //klart
 	public Car updateCar(Car car) {
-		Car gamlaCar = repository.findByName(car.getRegNr());
+		Car gamlaCar = repository.findByName(car.getName());
 		
 		if (gamlaCar==null) {
 			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Där finns inga bil med sama reg.nr");

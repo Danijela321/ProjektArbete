@@ -1,15 +1,12 @@
 package com.webbutik.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,13 +15,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.webbutik.config.SecurityConfiguration;
 import com.webbutik.entity.Car;
-import com.webbutik.entity.ModelOfCar;
-import com.webbutik.exception.NotAuthorized;
 import com.webbutik.exception.OurServerException;
 import com.webbutik.service.CarService;
-import com.webbutik.service.ModelOfCarService;
 
 @RestController
 public class CarController {
