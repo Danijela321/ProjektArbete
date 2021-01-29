@@ -8,9 +8,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+<<<<<<< HEAD
 import lombok.Getter;
 import lombok.Setter;
 
+=======
+/**
+ * Model of car entity
+ * @author Danijela
+ *
+ */
+>>>>>>> c1d145f2d9f2f695ec438400cff65eb6ff596461
 @Entity
 @Table(name = "ModelOfCar")
 @Getter
@@ -38,9 +46,24 @@ public class ModelOfCar implements Serializable {
 	private int seat; // 5
 	private int doors; // 5
 
+	/**
+	 * tom konstruktor
+	 */
 	public ModelOfCar() {
 	}
 
+	/**
+	 * Konstruktor av model_of_car entity
+	 * @param name typ av model av bil
+	 * @param power Hur mycket kraft harbilen
+	 * @param length Hur langd ar bilen
+	 * @param width HUr bredd ar bilen
+	 * @param height Hur hojd ar bilen
+	 * @param weelBase Vilken hjulbas har bilen
+	 * @param seat Hur manga sittplats har bilen
+	 * @param doors Hur manga dorrar har bilen
+	 * @author Danijela
+	 */
 	public ModelOfCar(String name, int power, int length, int width, int height, int weelBase, int seat, int doors) {
 		super();
 		this.name = name;
@@ -54,6 +77,7 @@ public class ModelOfCar implements Serializable {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Skriva ut egenskaper
 	 */
 //@Override
@@ -66,4 +90,157 @@ public class ModelOfCar implements Serializable {
 	public ModelOfCar(String name) {
 		this.name = name;
 	}
+=======
+	 * Set unik id fan databas( gör databas automatisk)
+	 * @param id Unik id fran databasen
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * Set namn av model
+	 * @param name typ av model
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * Set mootor kraft av model
+	 * @param power Kraft
+	 */
+	public void setPower(int power) {
+		this.power = power;
+	}
+
+	/**
+	 * Set langd
+	 * @param length langd 
+	 */
+	public void setLength(int length) {
+		this.length = length;
+	}
+
+	/**
+	 * Set bredd
+	 * @param width bredd
+	 */
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	/**
+	 * Set hojd
+	 * @param height Hojd
+	 */
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	/**
+	 * Set hjulbas
+	 * @param weelBase Hjulbas
+	 */
+	public void setWeelBase(int weelBase) {
+		this.weelBase = weelBase;
+	}
+
+	/**
+	 * Set sittplats
+	 * @param seat Sittplats
+	 */
+	public void setSeat(int seat) {
+		this.seat = seat;
+	}
+
+	/**
+	 * Set antal av dorrar
+	 * @param doors Dorrar
+	 */
+	public void setDoors(int doors) {
+		this.doors = doors;
+	}
+
+/**
+ * Get namn av model av bil
+ * @param name typ av model
+ */
+	public ModelOfCar(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * Get name
+	 * @return typ av model
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * Get antal av sittplatser
+	 * @return antal av sittplatser
+	 */
+	public int getSeat() {
+		return seat;
+	}
+
+	/**
+	 * Get antal av dorrar
+	 * @return antal av dorrar
+	 */
+	public int getDoors() {
+		return doors;
+	}
+
+	/**
+	 * Get unik id
+	 * @return unik id fran databasen
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * Get motor kraft
+	 * @return Kraft
+	 */
+	public int getPower() {
+		return power;
+	}
+
+	/**
+	 * Get langd
+	 * @return langd
+	 */
+	public int getLength() {
+		return length;
+	}
+
+	/**
+	 * Get bredd
+	 * @return bredd
+	 */
+	public int getWidth() {
+		return width;
+	}
+
+	/**
+	 * Get hojd
+	 * @return hojd
+	 */
+	public int getHeight() {
+		return height;
+	}
+
+	/**
+	 * Get hjulbas
+	 * @return hjulbas
+	 */
+	public int getWeelBase() {
+		return weelBase;
+	}
+
+>>>>>>> c1d145f2d9f2f695ec438400cff65eb6ff596461
 }

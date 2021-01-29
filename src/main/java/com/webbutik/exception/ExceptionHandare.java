@@ -1,5 +1,9 @@
 package com.webbutik.exception;
 
+/**
+ * Handlar exceptions
+ * @author Danijela
+ */
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
@@ -14,10 +18,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ExceptionHandare {
 	//vi handlar custom exception
 	//argument exception som är skapad
-	
+	/**
+	 * HttpStatus.BAD_REQUEST
+	 * @param e RuntimeException
+	 * @return en ny ResponseEntity
+	 * @author Danijela
+	 */
 	@ExceptionHandler( value= {OurCustomExceptions.class})
 	public ResponseEntity<Object> handleException(OurCustomExceptions e){
-		//1. skapar vi payload med ndantagsdetaljer
+		//1. skapar vi payload med undertagendetaljer
 		//message, throwable, httpstatus, timestamp)
 		HttpStatus badRequest = HttpStatus.BAD_REQUEST; //bad_request=400
 		OurException ourException=new OurException(e.getMessage(),
@@ -29,8 +38,15 @@ public class ExceptionHandare {
 		return new ResponseEntity<>(ourException,badRequest);		
 	
 	}	
+	
+	/**
+	 * HttpStatus.INTERNAL_SERVER_ERROR
+	 * @param ex Exception
+	 * @return en ny ResponseEntity
+	 * @author Danijela
+	 */
 	 @ExceptionHandler(value= {OurServerException.class})
-	    public final ResponseEntity<Object> handleUnexpectedExceptions(Exception ex) {
+	    public final ResponseEntity<Object> handleUnexpectedExceptions(OurServerException ex) {
 		 HttpStatus serverError = HttpStatus.INTERNAL_SERVER_ERROR; //internal server error 500
 			OurException ourException=new OurException(ex.getMessage(),
 					//e,  e=Throwable
@@ -41,8 +57,14 @@ public class ExceptionHandare {
 			return new ResponseEntity<>(ourException,serverError);
 	    }
 
+	 /**
+	  * HttpStatus.UNAUTHORIZED
+	  * @param ex RuntimeException
+	  * @return en ny ResponseEntity
+	  * @author Danijela
+	  */
 	 @ExceptionHandler(value= {NotAuthorized.class})
-	    public final ResponseEntity<Object> handleUnexpectedExceptions3(Exception ex) {
+	    public final ResponseEntity<Object> handleUnexpectedExceptions3(NotAuthorized ex) {
 		 HttpStatus notAuth = HttpStatus.UNAUTHORIZED; // error 403
 			OurException ourException=new OurException(ex.getMessage(),
 					//e,  e=Throwable
