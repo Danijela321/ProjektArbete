@@ -13,18 +13,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "Car")
+@Getter
+@Setter
 public class Car {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-
 	@Column(unique = true, nullable = false)
 	private String name; // regist.nummer
 	private String brandName; // (Volvo, BMW, Reanult)
@@ -39,7 +39,77 @@ public class Car {
 	private boolean automatic; // automatisk
 	private boolean isRentable; // går att hyra
 	private Date timeStored; // tid på lager (från denna dag till nu)
-	
+
+	public static class Builder {
+		//Mandatory
+		private String name; 
+		private String brandName; 
+		private String modelName; 
+		private int yearProduce;
+		private int price;
+		//Optional
+		private String fuel; 
+		private String color;
+		private int kilometer;
+		private boolean isNew;
+		private boolean navigation;
+		private boolean automatic;
+		private boolean isRentable;
+		private Date timeStored;
+		
+		public Builder(String name, String brandName, String modelName, int yearProduced, int price) {
+			this.name = name;
+			this.brandName = brandName;
+			this.modelName = modelName;
+			this.yearProduce = yearProduced;
+			this.price = price;
+		}
+		
+		public Builder fuel(String fuel) {
+			this.fuel = fuel;
+			return this;
+		}
+		
+		public Builder color(String color) {
+			this.color = color;
+			return this;
+		}
+		
+		public Builder kilometer(int kilometer) {
+			this.kilometer = kilometer;
+			return this;
+		}
+		
+		public Builder isNew(boolean isNew) {
+			this.isNew = isNew;
+			return this;
+		}
+		
+		public Builder navigation(boolean navigation) {
+			this.navigation = navigation;
+			return this;
+		}
+		
+		public Builder automatic(boolean automatic) {
+			this.automatic = automatic;
+			return this;
+		}
+		
+		public Builder isRentable(boolean isRentable) {
+			this.isRentable = isRentable;
+			return this;
+		}
+		
+		public Builder timeStored(Date timeStored) {
+			this.timeStored = timeStored;
+			return this;
+		}
+		
+		public Car build() {
+			return new Car(this);
+		}
+		
+	}
 	@OneToOne
 	private ModelOfCar modelOfCarName;
 
@@ -53,8 +123,24 @@ public class Car {
 
 	public Car() {
 	}
+	
+	private Car(Builder b) {
+		this.name = b.name;
+		this.brandName = b.brandName;
+		this.modelName = b.modelName;
+		this.yearProduce = b.yearProduce;
+		this.fuel = b.fuel;
+		this.color = b.color;
+		this.price = b.price;
+		this.kilometer = b.kilometer;
+		this.isNew = b.isNew;
+		this.navigation = b.navigation;
+		this.automatic = b.automatic;
+		this.isRentable = b.isRentable;
+		this.timeStored = b.timeStored;
+	}
 
-	public Car(int id, String name, String brandName, String modelName, int yearProduce, String fuel, String color,
+	public Car(int id, String name, String brandName, String modelName, int yearProduced, String fuel, String color,
 			int price, int kilometer, boolean isNew, boolean navigation, boolean automatic, boolean isRentable,
 			Date timeStored) {
 		super();
@@ -62,7 +148,7 @@ public class Car {
 		this.name = name;
 		this.brandName = brandName;
 		this.modelName = modelName;
-		this.yearProduce = yearProduce;
+		this.yearProduce = yearProduced;
 		this.fuel = fuel;
 		this.color = color;
 		this.price = price;
@@ -71,126 +157,6 @@ public class Car {
 		this.navigation = navigation;
 		this.automatic = automatic;
 		this.isRentable = isRentable;
-		this.timeStored = timeStored;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getRegNr() {
-		return name;
-	}
-
-	public void setRegNr(String regNr) {
-		this.name = regNr;
-	}
-
-	public String getBrandName() {
-		return brandName;
-	}
-
-	public void setBrandName(String brandName) {
-		this.brandName = brandName;
-	}
-
-	public String getModelName() {
-		return modelName;
-	}
-
-	public void setModelName(String modelName) {
-		this.modelName = modelName;
-	}
-
-	public int getYearProduce() {
-		return yearProduce;
-	}
-
-	public void setYearProduce(int yearProduce) {
-		this.yearProduce = yearProduce;
-	}
-
-	public String getFuel() {
-		return fuel;
-	}
-
-	public void setFuel(String fuel) {
-		this.fuel = fuel;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
-	public int getKilometer() {
-		return kilometer;
-	}
-
-	public void setKilometer(int kilometer) {
-		this.kilometer = kilometer;
-	}
-
-	public boolean isNew() {
-		return isNew;
-	}
-
-	public void setNew(boolean isNew) {
-		this.isNew = isNew;
-	}
-
-	public boolean isNavigation() {
-		return navigation;
-	}
-
-	public void setNavigation(boolean navigation) {
-		this.navigation = navigation;
-	}
-
-	public boolean isAutomatic() {
-		return automatic;
-	}
-
-	public void setAutomatic(boolean automatic) {
-		this.automatic = automatic;
-	}
-
-	public boolean isRentable() {
-		return isRentable;
-	}
-
-	public void setRentable(boolean isRentable) {
-		this.isRentable = isRentable;
-	}
-
-	public Date getTimeStored() {
-		return timeStored;
-	}
-
-	public void setTimeStored(Date timeStored) {
 		this.timeStored = timeStored;
 	}
 
