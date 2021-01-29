@@ -1,0 +1,147 @@
+@use "colors";
+@import "buttons.scss";
+@import "product.scss";
+@import "sidebar.scss";
+@import "toggles.scss";
+@import "slideshow.scss";
+@import "form.scss";
+
+body,
+html {
+  height: 100%;
+  transition: background-color 0.5s;
+
+  overflow: overlay;
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(12, 12, 15, 0.6);
+    border-radius: 6px;
+    transition: 0.3s;
+  }
+}
+
+/* Tar bort tomt utrymme runt hemsidan */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: initial;
+}
+
+div {
+  float: left;
+  box-sizing: border-box;
+}
+
+/* Gör så att våran app-div alltid täcker hela skärmen */
+#app {
+  float: none;
+  overflow: visible;
+}
+
+#anchor {
+  width: 100%;
+  padding-top: 70px;
+  background-color: rgb(12, 12, 15);
+}
+
+#header {
+  width: 100%;
+  height: auto;
+  float: left;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  padding-right: 4%;
+  box-sizing: border-box;
+  background-color: rgb(12, 12, 15);
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.8);
+}
+
+#logo {
+  width: 160px;
+  height: 60px;
+  margin-left: 20px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bolder;
+  font-family: Arial, Helvetica, sans-serif;
+  color: colors.$textLarge;
+
+  img {
+    width: 175px;
+    height: auto;
+    float: left;
+  }
+}
+
+#main-wrapper {
+  float: left;
+  width: 100%;
+  height: auto;
+}
+
+main {
+  width: 100%;
+  min-height: 600px;
+  float: left;
+  border-top: 25px solid #005c9c;
+  border-right: 25px solid #005c9c;
+  border-bottom: 25px solid #005c9c;
+  background-color: rgb(12, 12, 15);
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+#store {
+  width: 85%;
+  height: auto;
+  float: left;
+  transition: margin-left 0.5s;
+  box-sizing: border-box;
+  background-color: rgb(12, 12, 15);
+}
+
+#productList {
+  width: 100%;
+  height: auto;
+  float: left;
+  margin: 70px 110px;
+  padding: 25px 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 25%);
+  grid-template-rows: auto;
+  row-gap: 25px;
+  column-gap: 10px;
+}
+
+footer {
+  width: 100%;
+  height: 125px;
+  float: left;
+  background-color: rgb(12, 12, 15);
+  box-shadow: 0px -1px 3px 1px rgba(0, 0, 0, 0.6);
+}
+
+#backdrop {
+  display: block;
+  pointer-events: none;
+  position: fixed;
+  top: 70px;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  right: 0;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0);
+  transition: 0.6s;
+  -webkit-transition: 0.6s ease;
+  -moz-transition: 0.6s ease;
+}

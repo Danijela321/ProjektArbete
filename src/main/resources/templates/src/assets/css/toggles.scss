@@ -1,0 +1,39 @@
+#backdrop.toggle {
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  pointer-events: initial;
+}
+
+.dropdown-container.toggle {
+  .dropdown-block {
+    width: 275px;
+  }
+}
+
+.dropdown.toggle {
+  height: 175px;
+
+  .checkbox {
+    display: inline;
+  }
+}
+
+#side-bar.toggle {
+  width: 335px;
+
+  #side-bar-slide {
+    width: 275px;
+  }
+
+  .btn-dropdown {
+    display: block;
+  }
+}
+
+#store.toggle {
+  margin-left: 275px;
+}
+
+.arrow.toggle {
+  transform: rotate(180deg);
+  transition: transform 0.2s linear;
+}

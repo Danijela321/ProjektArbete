@@ -1,0 +1,30 @@
+.login {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+.register {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+fieldset {
+  width: 400px;
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+h2 {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
