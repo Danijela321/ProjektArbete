@@ -43,9 +43,9 @@ public class CarController {
 	/**
 	 * Skapa en bil i car tabell
 	 * @param car En ny bil
-	 * @author Danijela
+	 * @return Skapa en bil i car tabell
+	 *  @author Danijela
 	 */
-	
 	@PostMapping("/saveCar")
 	public Car saveCar(@RequestBody Car car) {		
 			return service.saveCar(car);
