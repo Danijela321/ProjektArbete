@@ -1,5 +1,15 @@
-com\webbutik\controller\HelloController.class
-com\webbutik\ProjektArbetApplication.class
+com\webbutik\exception\OurException.class
+com\webbutik\entity\ModelOfCar.class
+com\webbutik\exception\NotAuthorized.class
+com\webbutik\service\CarService.class
+com\webbutik\service\ModelOfCarService.class
+com\webbutik\repository\ModelOfCarRepository.class
+com\webbutik\repository\CarRepository.class
+com\webbutik\exception\ExceptionHandare.class
 com\webbutik\entity\Car.class
 com\webbutik\ServletInitializer.class
+com\webbutik\controller\ModelOfCarController.class
+com\webbutik\exception\OurCustomExceptions.class
+com\webbutik\exception\OurServerException.class
+com\webbutik\ProjektArbetApplication.class
 com\webbutik\controller\CarController.class

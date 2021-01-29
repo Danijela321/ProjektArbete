@@ -1,0 +1,7 @@
+com.webbutik
+com.webbutik.config
+com.webbutik.controller
+com.webbutik.entity
+com.webbutik.exception
+com.webbutik.repository
+com.webbutik.service
