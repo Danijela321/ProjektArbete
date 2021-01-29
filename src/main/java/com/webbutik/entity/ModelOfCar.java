@@ -8,8 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "ModelOfCar")
+@Getter
+@Setter
 public class ModelOfCar implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -27,7 +32,7 @@ public class ModelOfCar implements Serializable {
 	private int width; // 1798 titel mm
 	@Column(name = "height_i_mm")
 	private int height; // 1440 mm
-
+	
 	@Column(name = "weelBase_i_mm")
 	private int weelBase; // 2583 mm
 	private int seat; // 5
@@ -48,42 +53,6 @@ public class ModelOfCar implements Serializable {
 		this.doors = doors;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setPower(int power) {
-		this.power = power;
-	}
-
-	public void setLength(int length) {
-		this.length = length;
-	}
-
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
-	public void setWeelBase(int weelBase) {
-		this.weelBase = weelBase;
-	}
-
-	public void setSeat(int seat) {
-		this.seat = seat;
-	}
-
-	public void setDoors(int doors) {
-		this.doors = doors;
-	}
-
 	/**
 	 * Skriva ut egenskaper
 	 */
@@ -97,41 +66,4 @@ public class ModelOfCar implements Serializable {
 	public ModelOfCar(String name) {
 		this.name = name;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public int getSeat() {
-		return seat;
-	}
-
-	public int getDoors() {
-		return doors;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public int getPower() {
-		return power;
-	}
-
-	public int getLength() {
-		return length;
-	}
-
-	public int getWidth() {
-		return width;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
-	public int getWeelBase() {
-		return weelBase;
-	}
-
 }
