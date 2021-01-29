@@ -1,17 +1,16 @@
 <template>
-<div id="app">
-<div id="anchor">
-    <Header />
-    <div id="main-wrapper">
-      <main id="main">
-        <router-view />
-      </main>
+  <div id="app">
+    <div id="anchor">
+      <Header />
+      <div id="main-wrapper">
+        <main id="main">
+          <router-view />
+        </main>
+      </div>
+      <Footer />
+      <div id="backdrop" @click="toggleSidebar" />
     </div>
-    <Footer />
-    <div id="backdrop" @click="toggleSidebar" />
   </div>
-</div>
-  
 </template>
 
 <script>

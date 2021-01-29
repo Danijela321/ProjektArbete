@@ -24,11 +24,11 @@ button {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   background-color: colors.$secondary;
-  color: colors.$primary;
+  color: black;
   transition: 0.3s;
 
   &:hover {
-    color: colors.$primaryHighlight;
+    color: darkorange;
     text-decoration: none;
     transition: 0.3s;
   }
@@ -44,7 +44,7 @@ button {
 
   &:hover {
     color: colors.$textHighlight;
-    color: #86c232;
+    color: darkorange;
     text-decoration: none;
     transition: 0.3s;
   }
@@ -93,7 +93,7 @@ button {
   text-align: left;
 
   &:hover {
-    color: #86c232;
+    color: darkorange;
   }
   .arrow {
     width: auto;

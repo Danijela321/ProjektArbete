@@ -13,9 +13,9 @@ export default {
       sources: [
         "/src/assets/images/bmwx1.jpg",
         "/src/assets/images/volvov70.jpg",
-        "/src/assets/images/placeholder.png",
-        "/src/assets/images/bmwx1.jpg",
-        "/src/assets/images/volvov70.jpg",
+        "/src/assets/images/car1.jpg",
+        "/src/assets/images/car2.jpg",
+        "/src/assets/images/car3.jpg",
         "/src/assets/images/placeholder.png",
       ],
     };

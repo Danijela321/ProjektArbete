@@ -2,11 +2,12 @@
   <div class="product">
     <div class="img-wrapper">
       <div class="img-container">
-        <img src="../assets/images/placeholder.png" :alt="name" />
+        <img src="../assets/images/car1.jpg" :alt="name" />
       </div>
     </div>
     <div class="product-info">
       <h2>{{ name }}</h2>
+      <hr />
       <span>{{ model }} </span>
       <span>{{ brand }}</span>
       <br />
@@ -30,7 +31,7 @@ export default {
   props: {
     source: {
       type: String,
-      default: "placeholder.png",
+      default: "car1.jpg",
     },
   },
 
