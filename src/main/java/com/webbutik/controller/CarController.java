@@ -28,27 +28,20 @@ import com.webbutik.service.CarService;
 @RestController
 public class CarController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(CarController.class);
+	//private static final Logger LOGGER = LoggerFactory.getLogger(CarController.class);
 	
 	@Autowired
 	private CarService service;
 
 	/**
-	 * Spara en car i tabell Car
-	 * @param car Objekt i tabell Car
-	 * @return Spara en car i tabell Car
-	 * @throws OurServerException Om bil finns i tabell metoder kastar exception darfor att man kan inte spara tva bilar med samma namn dvs.regNr.
-	 * @author Danijela
+	 * Skapa en bil i car tabell
+	 * @param car En ny bil
+	 * @return Skapa en bil i car tabell
+	 *  @author Danijela
 	 */
 	@PostMapping("/saveCar")
-	public Car saveCar(@RequestBody Car car) {
-		try {
+	public Car saveCar(@RequestBody Car car) {		
 			return service.saveCar(car);
-		} catch (Exception e) {
-			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat.Bil finns  i tabell");
-			//throw new OurServerException("Bil finns  i tabell.");
-			throw new OurCustomExceptions("Bil finns i tabell");
-		}
 	}
 
 	

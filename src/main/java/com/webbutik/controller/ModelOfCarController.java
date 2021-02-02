@@ -32,22 +32,17 @@ public class ModelOfCarController {
 	@Autowired
 	private ModelOfCarService service;
 
-	/**
-	 * Skapa en model av bil i modelOfCAr tabell
-	 * @param modelOfCar Clio, Focus, m3...
-	 * @return Skapa en model av bil i modelOfCAr tabell
-	 * @throws OurServerException Om model finns i tabell kastar metoden exception
-	 * @author Danijela
-	 */
+/**
+ * Skapa en model av bil i modelOfCAr tabell
+ * @param modelOfCar Clio, Focus, m3...
+ * @return Skapa en model av bil i modelOfCAr tabell
+ * @author Danijela
+ */
 	@PostMapping("/saveModel")
 	public ModelOfCar saveModel(@RequestBody ModelOfCar modelOfCar)  {
-		try {
+		
 			return service.saveModel(modelOfCar);
-		} catch (Exception e) {
-			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat");
-			//throw new OurServerException("Model finns  i tabell!");
-			throw new OurCustomExceptions("Model finns i tabell");
-		}
+
 	}
 
 	/**

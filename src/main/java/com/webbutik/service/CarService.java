@@ -42,8 +42,7 @@ public class CarService {
 	/**
 	 * Skapar en ny bil i tabell car
 	 * @param car En ny bil
-	 * @return Skapar en ny bil i tabell car
-	 * @throws Exception Om Om bil finns i tabell metoder kastar exception darfor att man kan inte spara tva bilar med samma namn dvs.regNr.
+	 * @return  Skapar en ny bil i tabell car
 	 * @author Danijela
 	 */
 	public Car saveCar(Car car)  {
@@ -57,9 +56,10 @@ public class CarService {
 		if(existingCar==null) {		
 		car.setModelOfCarName(modelofcar);
 		return repository.save(car);}
-		else
-		
+		else {
+			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat.Bil finns  i tabell");			
 			throw new OurCustomExceptions("Bil finns i tabell");
+		}
 	}
 
 	// klart

@@ -4,6 +4,7 @@ Java 11
 
 Javadoc
 Spring Boot
+Maven
 Hibernate
 JPARepository med Spring Data JPA @Query annotation
 Derby databasen

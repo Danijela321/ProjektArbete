@@ -34,20 +34,19 @@ public class ModelOfCarService {
 	@Autowired
 	private CarRepository carRepository;
 
-	/**
-	 * Spara en ny model av bil i tabell model_of_car
-	 * @param modelOfCar Model av bil: Clio,m3, Focus...
-	 * @return Spara en ny model av bil i tabell model_of_car
-	 * @throws Exception Metoder kastar exceptions om man vill skapa en model som redan finns i tabell
-	 * @author Danijela
-	 */
+/**
+ * Spara en ny model av bil i tabell model_of_car
+ * @param modelOfCar Model av bil: Clio,m3, Focus...
+ * @return Spara en ny model av bil i tabell model_of_car
+ * @author Danijela
+ */
 	public ModelOfCar saveModel(ModelOfCar modelOfCar)  {
 		ModelOfCar existingModel = repository.findByName(modelOfCar.getName());
 		if (existingModel == null)
 			return repository.save(modelOfCar);
 		else
 			{
-		//	throw new OurServerException("Model finns  i tabell");}
+			LOGGER.error("Spring Boot informerar mig om att ett fel har inträffat. Model finns i tabell");
 			throw new OurCustomExceptions("Model finns i tabell");}
 
 	}
