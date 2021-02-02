@@ -66,18 +66,6 @@ public class Account implements Serializable{
 		return this.firstName + " " + this.surname;
 	}
 	
-	public boolean verifyPassword(String password) {
-		return (this.password == password) ? true : false;
-	}
-	
-	public boolean verifyAccessLevel() {
-		return(this.accessLevel == ADMIN) ? true : false;
-	}
-	
-	public boolean verifyMembership() {
-		return(this.premiumMember) ? true : false;
-	}
-	
 	public String toString() {
 		return "Name: " + firstName + " " + surname + "   Email:" + email;
 	}
